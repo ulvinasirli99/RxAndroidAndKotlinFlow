@@ -1,4 +1,4 @@
-package nasirli.tool.rxandroidandkotlinflows.data.models
+package nasirli.tool.rxandroidandkotlinflows.domain.models
 
 data class Teacher(
     val id: Int,

@@ -84,7 +84,12 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     // Coil for Image
     implementation(libs.coil.compose)
-    implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
+    implementation(libs.compose)
+    // RxJava
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
+    // RxJava bindings for Retrofit
+    implementation(libs.adapter.rxjava2)
 
 }
 

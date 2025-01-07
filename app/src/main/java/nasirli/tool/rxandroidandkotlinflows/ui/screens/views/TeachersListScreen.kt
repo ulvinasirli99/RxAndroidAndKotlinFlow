@@ -1,4 +1,4 @@
-package nasirli.tool.rxandroidandkotlinflows.ui.screens.teachers
+package nasirli.tool.rxandroidandkotlinflows.ui.screens.views
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import nasirli.tool.rxandroidandkotlinflows.data.models.Teacher
+import nasirli.tool.rxandroidandkotlinflows.domain.models.Teacher
 import nasirli.tool.rxandroidandkotlinflows.ui.view_models.TeacherListViewModel
 import nasirli.tool.rxandroidandkotlinflows.ui.view_models.UiState
 

@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import nasirli.tool.rxandroidandkotlinflows.data.models.Teacher
+import nasirli.tool.rxandroidandkotlinflows.domain.models.Teacher
 import nasirli.tool.rxandroidandkotlinflows.domain.use_cases.GetTeachersUseCase
 import javax.inject.Inject
 

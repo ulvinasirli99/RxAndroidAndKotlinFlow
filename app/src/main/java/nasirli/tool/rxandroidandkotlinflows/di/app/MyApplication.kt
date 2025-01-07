@@ -1,4 +1,4 @@
-package nasirli.tool.rxandroidandkotlinflows.di
+package nasirli.tool.rxandroidandkotlinflows.di.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
