@@ -20,7 +20,6 @@ import javax.inject.Inject
 class TeacherListViewModel @Inject constructor(
     private val getTeachersUseCase: GetTeachersUseCase
 ) : ViewModel() {
-    private val TAG = "TeacherListViewModel"
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> get() = _uiState
 
