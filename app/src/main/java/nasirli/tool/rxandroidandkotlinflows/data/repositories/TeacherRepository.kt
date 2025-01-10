@@ -1,7 +1,8 @@
 package nasirli.tool.rxandroidandkotlinflows.data.repositories
 
+import io.reactivex.Single
 import nasirli.tool.rxandroidandkotlinflows.domain.models.Teacher
 
 interface TeacherRepository {
-    suspend fun getTeachers(): List<Teacher>
+    fun getTeachers(): Single<List<Teacher>>
 }

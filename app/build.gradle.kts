@@ -69,8 +69,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // View Model
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+  
     // Retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
@@ -90,6 +89,10 @@ dependencies {
     implementation(libs.rxandroid)
     // RxJava bindings for Retrofit
     implementation(libs.adapter.rxjava2)
+    // Live Data
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+    // Compose LiveData support
+    implementation (libs.androidx.runtime.livedata)
 
 }
 

@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import nasirli.tool.rxandroidandkotlinflows.data.api.ApiService
 import nasirli.tool.rxandroidandkotlinflows.utils.constants.BASE_URL
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -20,6 +21,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 
