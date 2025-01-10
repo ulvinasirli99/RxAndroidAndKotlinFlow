@@ -9,7 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
-import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.EducatorListScreen
+import nasirli.tool.rxandroidandkotlinflows.navigation.controllers.NavGraph
+import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.TeacherListScreen
 import nasirli.tool.rxandroidandkotlinflows.ui.theme.RxAndroidAndKotlinFlowsTheme
 
 @AndroidEntryPoint
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             RxAndroidAndKotlinFlowsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    EducatorListScreen(modifier = Modifier.padding(innerPadding))
+                    NavGraph.AppNavGraph(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

@@ -69,7 +69,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-  
+
     // Retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
@@ -81,7 +81,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-    // Coil for Image
+    // Coil and Glide for Image
     implementation(libs.coil.compose)
     implementation(libs.compose)
     // RxJava
@@ -91,8 +91,9 @@ dependencies {
     implementation(libs.adapter.rxjava2)
     // Live Data
     implementation (libs.androidx.lifecycle.livedata.ktx)
-    // Compose LiveData support
     implementation (libs.androidx.runtime.livedata)
+    // Gson
+    implementation (libs.gson)
 
 }
 

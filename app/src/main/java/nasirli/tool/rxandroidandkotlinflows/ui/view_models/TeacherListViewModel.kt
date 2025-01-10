@@ -14,11 +14,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import nasirli.tool.rxandroidandkotlinflows.domain.models.Teacher
 import nasirli.tool.rxandroidandkotlinflows.domain.use_cases.GetTeachersUseCase
+import nasirli.tool.rxandroidandkotlinflows.navigation.routes.Router
 import javax.inject.Inject
 
 @HiltViewModel
 class TeacherListViewModel @Inject constructor(
-    private val getTeachersUseCase: GetTeachersUseCase
+    private val getTeachersUseCase: GetTeachersUseCase,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> get() = _uiState
