@@ -1,4 +1,4 @@
-package nasirli.tool.rxandroidandkotlinflows.ui.screens.views
+package nasirli.tool.rxandroidandkotlinflows.ui.screens.views.teacher
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

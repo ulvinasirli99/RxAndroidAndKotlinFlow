@@ -10,8 +10,8 @@ import androidx.navigation.navArgument
 import com.google.gson.Gson
 import nasirli.tool.rxandroidandkotlinflows.domain.models.TeacherDetail
 import nasirli.tool.rxandroidandkotlinflows.navigation.routes.CommonScreenToRoute
-import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.TeacherDetailScreen
-import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.TeacherListScreen
+import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.teacher.TeacherDetailScreen
+import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.teacher.TeacherListScreen
 
 object NavGraph {
     @Composable

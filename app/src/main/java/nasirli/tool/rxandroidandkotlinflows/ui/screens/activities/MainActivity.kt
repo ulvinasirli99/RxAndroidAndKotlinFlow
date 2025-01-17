@@ -10,7 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
 import nasirli.tool.rxandroidandkotlinflows.navigation.controllers.NavGraph
-import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.TeacherListScreen
+import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.trade.TradeSocketScreen
 import nasirli.tool.rxandroidandkotlinflows.ui.theme.RxAndroidAndKotlinFlowsTheme
 
 @AndroidEntryPoint
@@ -21,9 +21,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RxAndroidAndKotlinFlowsTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavGraph.AppNavGraph(modifier = Modifier.padding(innerPadding))
-                }
+                TradeSocketScreen()
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    NavGraph.AppNavGraph(modifier = Modifier.padding(innerPadding))
+//                }
             }
         }
     }

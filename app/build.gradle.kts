@@ -94,6 +94,10 @@ dependencies {
     implementation (libs.androidx.runtime.livedata)
     // Gson
     implementation (libs.gson)
+    // OkHttp for Web Socket
+    implementation(libs.okhttp)
+    // Chart
+    implementation(libs.mpandroidchart)
 
 }
 
