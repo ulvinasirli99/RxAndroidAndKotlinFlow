@@ -1,12 +1,11 @@
 package nasirli.tool.rxandroidandkotlinflows.ui.view_models
 
 import android.util.Log
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -30,8 +29,8 @@ class TradeViewModel @Inject constructor(
     private val _tradeResponse = MutableStateFlow<TradeResponse?>(null)
     val tradeResponse: StateFlow<TradeResponse?> = _tradeResponse.asStateFlow()
 
-    private val _lineData = MutableStateFlow<LineData?>(null)
-    val lineData: StateFlow<LineData?> = _lineData
+    private val _barData = MutableStateFlow<BarData?>(null)
+    val barData: StateFlow<BarData?> = _barData
 
     private val gson = Gson()
 
@@ -76,14 +75,14 @@ class TradeViewModel @Inject constructor(
 
         // Convert response data to chart entries
         val entries = response.data.mapIndexed { index, trade ->
-            Entry(index.toFloat(), trade.p.toFloat()) // Index as X-axis and price as Y-axis
+            BarEntry(index.toFloat(), trade.v.toFloat(),0) // Index as X-axis and price as Y-axis
         }
 
-        val dataSet = LineDataSet(entries, "Price Data")
+        val dataSet = BarDataSet(entries, "Price Data")
         dataSet.color = android.graphics.Color.BLUE // Set line color
         dataSet.valueTextColor = android.graphics.Color.RED // Set value text color
 
-        _lineData.value = LineData(dataSet)
+        _barData.value = BarData(dataSet)
     }
 
     fun sendSubscriptionEvent() {

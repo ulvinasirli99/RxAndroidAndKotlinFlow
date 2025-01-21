@@ -12,9 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
+import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import nasirli.tool.rxandroidandkotlinflows.ui.view_models.TradeViewModel
@@ -26,9 +26,9 @@ fun TradeSocketScreen(
     tradeViewModel: TradeViewModel = hiltViewModel()
 ) {
     val tradeResponse by tradeViewModel.tradeResponse.collectAsState()
-    val lineData by tradeViewModel.lineData.collectAsState()
+    val barData by tradeViewModel.barData.collectAsState()
 
-    // LazyListState to control scroll position
+    // LazyListState for smooth scrolling
     val listState = rememberLazyListState()
 
     LaunchedEffect(tradeResponse) {
@@ -57,21 +57,21 @@ fun TradeSocketScreen(
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        // Display Chart
-        if (lineData != null) {
+        // Display BarChart
+        if (barData != null) {
             AndroidView(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(400.dp),
                 factory = { ctx ->
-                    LineChart(ctx).apply {
+                    BarChart(ctx).apply {
                         description.isEnabled = false
                         setTouchEnabled(true)
                         isDragEnabled = true
                         setScaleEnabled(true)
                         setPinchZoom(true)
 
-                        axisRight.isEnabled = false
+                        axisRight.isEnabled = false // Disable right axis
 
                         // X-Axis Configuration
                         xAxis.apply {
@@ -84,9 +84,7 @@ fun TradeSocketScreen(
                                     val trade = tradeResponse?.data?.getOrNull(index)
                                     return trade?.let {
                                         val date = Date(it.t)
-                                        SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(
-                                            date
-                                        )
+                                        SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(date)
                                     } ?: ""
                                 }
                             }
@@ -107,19 +105,19 @@ fun TradeSocketScreen(
                     }
                 },
                 update = { chart ->
-                    lineData?.let { data ->
-                        val dataSet = data.getDataSetByIndex(0) as? LineDataSet
-                        dataSet?.apply {
-                            setDrawFilled(true)
-                            fillColor = Color.RED // Optional gradient fill
-                            color = Color.BLUE
-                            setDrawCircles(false)
-                            lineWidth = 2f
-                            mode = LineDataSet.Mode.CUBIC_BEZIER
+                    barData?.let { data ->
+                        // Update the dataset
+                        val dataSet = data.getDataSetByIndex(0) // Get existing dataset
+
+                        // Add new BarEntries (or update existing ones)
+                        tradeResponse?.data?.forEachIndexed { index, trade ->
+                            val entry = BarEntry(index.toFloat(), trade.v.toFloat())
+                            data.addEntry(entry, 0) // Add to the first dataset
                         }
 
                         chart.data = data
-                        chart.invalidate()
+                        chart.notifyDataSetChanged() // Notify the chart about data change
+                        chart.invalidate() // Refresh the chart
                         chart.moveViewToX(data.entryCount.toFloat() - 10) // Keep the last 10 entries in view
                     }
                 }
@@ -152,11 +150,6 @@ fun TradeSocketScreen(
                 }
             }
         }
-        tradeResponse?.data?.forEach { trade ->
-            Text(
-                text = "Symbol: ${trade.s}, Price: ${trade.p}, Volume: ${trade.v}",
-                style = MaterialTheme.typography.bodyLarge
-            )
-        }
     }
 }
+
