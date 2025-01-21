@@ -12,6 +12,7 @@ import nasirli.tool.rxandroidandkotlinflows.domain.models.TeacherDetail
 import nasirli.tool.rxandroidandkotlinflows.navigation.routes.CommonScreenToRoute
 import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.teacher.TeacherDetailScreen
 import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.teacher.TeacherListScreen
+import nasirli.tool.rxandroidandkotlinflows.ui.screens.views.trade.TradeSocketScreen
 
 object NavGraph {
     @Composable
@@ -32,7 +33,12 @@ object NavGraph {
             )) { backStackEntry ->
                 val json = backStackEntry.arguments?.getString("data")
                 val detailTeacherData = Gson().fromJson(json, TeacherDetail::class.java)
-                TeacherDetailScreen(detailTeacherData)
+                TeacherDetailScreen(detailTeacherData, navController)
+            }
+            composable(CommonScreenToRoute.TradeWebSocketScreen.route) {
+                TradeSocketScreen(
+                    navCtrl = navController
+                )
             }
         }
     }

@@ -36,10 +36,8 @@ class TradeViewModel @Inject constructor(
 
 
     init {
-
-        listenToWebSocket()
         // Observe messages from WebSocketMessageHolder
-
+        listenToWebSocket()
     }
 
     override fun onCleared() {
@@ -75,7 +73,7 @@ class TradeViewModel @Inject constructor(
 
         // Convert response data to chart entries
         val entries = response.data.mapIndexed { index, trade ->
-            BarEntry(index.toFloat(), trade.v.toFloat(),0) // Index as X-axis and price as Y-axis
+            BarEntry(index.toFloat(), trade.v.toFloat(), 0) // Index as X-axis and price as Y-axis
         }
 
         val dataSet = BarDataSet(entries, "Price Data")

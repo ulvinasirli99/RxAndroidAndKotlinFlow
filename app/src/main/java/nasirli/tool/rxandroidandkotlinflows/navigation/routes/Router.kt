@@ -11,6 +11,10 @@ class Router @Inject constructor(private val navController: NavController) {
         navController.navigate(CommonScreenToRoute.TeacherList.route)
     }
 
+    fun navigateToTradeWebSocketScreen() {
+        navController.navigate(CommonScreenToRoute.TradeWebSocketScreen.route)
+    }
+
     fun navigateToTeacherDetailScreen(detailData: TeacherDetail) {
         val json = Gson().toJson(detailData)
         navController.navigate(CommonScreenToRoute.TeacherDetail.getTeacherDetailRoute(json))

@@ -5,4 +5,5 @@ sealed class CommonScreenToRoute(val route: String) {
     data object TeacherDetail : CommonScreenToRoute("teacherDetailScreen?data={data}") {
         fun getTeacherDetailRoute(data: String) = "teacherDetailScreen?data=$data"
     }
+    data object TradeWebSocketScreen : CommonScreenToRoute("tradeWebSocketScreen")
 }

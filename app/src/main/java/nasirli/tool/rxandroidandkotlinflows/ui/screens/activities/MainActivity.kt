@@ -21,10 +21,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RxAndroidAndKotlinFlowsTheme {
-                TradeSocketScreen()
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    NavGraph.AppNavGraph(modifier = Modifier.padding(innerPadding))
-//                }
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    NavGraph.AppNavGraph(modifier = Modifier.padding(innerPadding))
+                }
             }
         }
     }
