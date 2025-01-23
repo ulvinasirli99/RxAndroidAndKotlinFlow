@@ -1,13 +1,13 @@
 package nasirli.tool.rxandroidandkotlinflows.di.modules
 
-import android.util.Log
+import android.app.Application
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import nasirli.tool.rxandroidandkotlinflows.ui.view_models.TradeViewModel
-import nasirli.tool.rxandroidandkotlinflows.utils.constants.TRADE_SECRET_KEY
 import nasirli.tool.rxandroidandkotlinflows.utils.constants.TRADE_WEB_SOCKET
+import nasirli.tool.rxandroidandkotlinflows.utils.helpers.AppEnvironment
 import nasirli.tool.rxandroidandkotlinflows.utils.helpers.CustomWebSocketListener
 import nasirli.tool.rxandroidandkotlinflows.utils.helpers.WebSocketMessageHolder
 import okhttp3.OkHttpClient
@@ -23,6 +23,10 @@ object WebSocketModule {
     @Provides
     @Singleton
     fun provideWebSocketMessageHolder(): WebSocketMessageHolder = WebSocketMessageHolder()
+
+    @Provides
+    @Singleton
+    fun provideContext(application: Application): Context = application.applicationContext
 
     @Provides
     @Singleton
@@ -45,8 +49,11 @@ object WebSocketModule {
     @Singleton
     fun provideWebSocket(
         client: OkHttpClient,
-        customWebSocketListener: CustomWebSocketListener
+        customWebSocketListener: CustomWebSocketListener,
+        context: Context,
     ): WebSocket {
+        val envMap = AppEnvironment().loadEnv(context)
+        val TRADE_SECRET_KEY = envMap["TRADE_SECRET_KEY"]
         val request = Request.Builder()
             .url("$TRADE_WEB_SOCKET$TRADE_SECRET_KEY")
             .build()

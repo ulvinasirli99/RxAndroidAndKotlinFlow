@@ -1,5 +1,6 @@
 package nasirli.tool.rxandroidandkotlinflows.navigation.controllers
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavType
@@ -18,7 +19,7 @@ object NavGraph {
     @Composable
     fun AppNavGraph(
         startDestination: String = CommonScreenToRoute.TeacherList.route,
-        modifier: Modifier
+        modifier: Modifier,
     ) {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = startDestination) {

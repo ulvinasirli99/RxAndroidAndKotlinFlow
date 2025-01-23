@@ -31,6 +31,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import io.github.cdimascio.dotenv.dotenv
 import nasirli.tool.rxandroidandkotlinflows.ui.theme.Purple80
 import nasirli.tool.rxandroidandkotlinflows.ui.view_models.TradeViewModel
 import java.text.SimpleDateFormat
@@ -42,8 +43,10 @@ fun TradeSocketScreen(
     tradeViewModel: TradeViewModel = hiltViewModel(),
     navCtrl: NavHostController,
 ) {
+
     val tradeResponse by tradeViewModel.tradeResponse.collectAsState()
     val barData by tradeViewModel.barData.collectAsState()
+
 
     // LazyListState for smooth scrolling
     val listState = rememberLazyListState()

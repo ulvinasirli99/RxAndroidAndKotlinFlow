@@ -1,20 +1,14 @@
 package nasirli.tool.rxandroidandkotlinflows.ui.view_models
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import nasirli.tool.rxandroidandkotlinflows.domain.models.Teacher
 import nasirli.tool.rxandroidandkotlinflows.domain.use_cases.GetTeachersUseCase
-import nasirli.tool.rxandroidandkotlinflows.navigation.routes.Router
 import javax.inject.Inject
 
 @HiltViewModel

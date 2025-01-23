@@ -1,5 +1,6 @@
 package nasirli.tool.rxandroidandkotlinflows.ui.screens.activities
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -22,7 +23,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             RxAndroidAndKotlinFlowsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavGraph.AppNavGraph(modifier = Modifier.padding(innerPadding))
+                    NavGraph.AppNavGraph(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }

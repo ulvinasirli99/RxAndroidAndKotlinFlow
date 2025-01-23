@@ -98,6 +98,8 @@ dependencies {
     implementation(libs.okhttp)
     // Chart
     implementation(libs.mpandroidchart)
+    // Dotenv-Kotlin
+    implementation(libs.dotenv.kotlin)
 
 }
 
