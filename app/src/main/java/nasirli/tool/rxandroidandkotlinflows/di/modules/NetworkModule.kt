@@ -1,11 +1,13 @@
 package nasirli.tool.rxandroidandkotlinflows.di.modules
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import nasirli.tool.rxandroidandkotlinflows.data.api.ApiService
 import nasirli.tool.rxandroidandkotlinflows.utils.constants.BASE_URL
+import nasirli.tool.rxandroidandkotlinflows.utils.helpers.AppEnvironment
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
@@ -21,9 +23,11 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit {
+    fun provideRetrofit(context: Context): Retrofit {
+        val envMap = AppEnvironment().loadEnv(context)
+        val teacherBaseUrl = envMap["TEACHER_BASE_URL"]
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(teacherBaseUrl.toString())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
